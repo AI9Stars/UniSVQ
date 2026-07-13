@@ -16,6 +16,8 @@
 
 我们还进一步使用约8B的对话形式有监督数据强化了模型在数学、代码和复杂任务上的表现。在Qwen3 1.7B上，我们通过8B有监督数据训练后的2bit模型的性能表现如下：
 
+模型可在[🤗 我们的 huggingface 仓库](https://huggingface.co/w-hy21/lcqat_qwen3_1.7B)上获取。
+
 | 模型              | OpenbookQA | If    | MMLU  | GSM8K | MATH  | HumanEval | BBH   | Avg.  |
 |-----------------|------------|-------|-------|-------|-------|-----------|-------|-------|
 | Qwen3 1.7B fp16 | 64.40      | 74.34 | 63.87 | 83.70 | 71.20 | 60.98     | 60.47 | 68.42 |
@@ -92,7 +94,7 @@ base_model_path=YOUR_BASE_MODEL_PATH    # 如 Qwen3-1.7B 模型路径
 exp_dir=YOUR_EXP_DIR                    # 输出目录
 dataset_path="YOUR_DATASET_PATH/pajama.jsonl"  # 校准数据集路径
 ```
-
+我们的校准数据集从`togethercomputer/RedPajama-Data-1T-Sample`中获取。  
 脚本分为 3 个阶段（通过 `stage` 变量控制）：
 - **阶段 1**（`stage=1`）：计算 Hessian 矩阵
 - **阶段 2**（`stage=2`）：量化权重并微调

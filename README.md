@@ -16,6 +16,8 @@ This repository provides the code for training post-training quantization (PTQ) 
 
 We also strengthen the model's performance on math, code, and complex tasks using approximately 8B tokens of conversational supervised data. The performance of our 2-bit model after 8B supervised fine-tuning on Qwen3 1.7B is shown below:
 
+The model is available at our [🤗 huggingface repo](https://huggingface.co/w-hy21/lcqat_qwen3_1.7B).
+
 | Model              | OpenbookQA | If    | MMLU  | GSM8K | MATH  | HumanEval | BBH   | Avg.  |
 |-----------------|------------|-------|-------|-------|-------|-----------|-------|-------|
 | Qwen3 1.7B fp16 | 64.40      | 74.34 | 63.87 | 83.70 | 71.20 | 60.98     | 60.47 | 68.42 |
@@ -89,6 +91,8 @@ base_model_path=YOUR_BASE_MODEL_PATH    # e.g., path to Qwen3-1.7B
 exp_dir=YOUR_EXP_DIR                    # Output directory
 dataset_path="YOUR_DATASET_PATH/pajama.jsonl"  # Calibration dataset
 ```
+
+Our calibration dataset is sampled from `togethercomputer/RedPajama-Data-1T-Sample`.
 
 The script runs in 3 stages (controlled by `stage` variable):
 - **Stage 1** (`stage=1`): Compute Hessians for optimal quantization
